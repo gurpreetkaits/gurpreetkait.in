@@ -1,10 +1,10 @@
 <script setup>
 import BlogView from '@/views/BlogView.vue'
-import ProjectsView from '@/views/ProjectsView.vue'
+import SocialIcons from '@/components/SocialIcons.vue'
 </script>
 
 <template>
-  <div class="mb-32 flex flex-col items-start my-7 transition-shadow ease-in-out duration-300	">
+  <div id="homeViewContainer" class="mb-32 flex flex-col items-start my-7 transition-shadow ease-in-out duration-300	">
     <div class="container mx-auto p-4">
       <!--     Introduction     -->
       <div class="max-w-32 pl-4 flex items-center">
@@ -19,6 +19,7 @@ import ProjectsView from '@/views/ProjectsView.vue'
               insights through my blog, connecting with fellow devs, and staying ahead of the curve. Let's make
               something awesome together!
             </p>
+            <SocialIcons></SocialIcons>
           </div>
         </div>
       </div>
@@ -29,3 +30,4 @@ import ProjectsView from '@/views/ProjectsView.vue'
     </div>
   </div>
 </template>
+

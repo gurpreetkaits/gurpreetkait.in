@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-view container p-4">
+  <div class="blog-view container p-4 min-h-screen">
     <p class="p-2 rounded-md font-medium headings">Blogs</p>
     <div
       class="my-4 flex cursor-pointer items-center pl-2 mt-3 rounded-lg transition-all p-3 ease-in-out hover:bg-gray-100">
