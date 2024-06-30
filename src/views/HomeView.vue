@@ -23,10 +23,6 @@ import SocialIcons from '@/components/SocialIcons.vue'
           </div>
         </div>
       </div>
-      <!--  Latest 3 Blogs  -->
-      <BlogView />
-      <!--  All Projects    -->
-<!--      <ProjectsView />-->
     </div>
   </div>
 </template>

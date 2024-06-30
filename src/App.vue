@@ -7,7 +7,7 @@ import Navbar from '@/components/Navbar.vue'
 <template>
   <Navbar></Navbar>
   <main class="mx-auto my-12  overflow-x-hidden px-6 text-gray-1200 antialiased sm:my-32 md:my-16"
-        style="max-width:740px">
+        style="max-width:1000px">
     <RouterView />
   </main>
 </template>

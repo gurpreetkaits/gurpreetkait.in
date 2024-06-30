@@ -15,3 +15,12 @@ export const getPosts = async () => {
         throw new Error('Error fetching blog posts');
     }
 };
+
+export const getPost = async (id) => {
+    try {
+        const response = await apiClient.get(`/posts/${id}`);
+        return response.data;
+    } catch (error) {
+        throw new Error('Error fetching blog posts');
+    }
+};

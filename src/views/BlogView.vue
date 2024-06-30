@@ -1,31 +1,38 @@
 <template>
-  <div class="blog-view container p-4 min-h-screen">
-    <p class="p-2 rounded-md font-medium headings">Blogs</p>
-    <div v-if="loading" class="text-center">Loading...</div>
-    <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
-    <div v-else>
-      <div v-for="post in posts.posts" :key="post.id"
-           class="my-4 flex cursor-pointer items-center pl-2 mt-3 rounded-lg transition-all p-3 ease-in-out hover:bg-gray-100">
-        <div>
-          <p class="post-title text-base text-gray-700">{{ post.title }}</p>
-          <p class="text-xs mt-2 text-gray-600">{{ formatDate(post.updated_at) }}</p>
-        </div>
+  <section class="w-full">
+    <div class="container px-4 md:px-6">
+      <div class="space-y-4 text-center">
+        <p class="max-w-[700px] mx-auto text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+          Check out some of the projects I've worked on. Each one showcases my skills and expertise in various
+          technologies.
+        </p>
       </div>
+      <template v-for="blog in blogs" :key="blog.id">
+        <article>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-1 mt-12" v-if="blogs.length > 0">
+            <div class="grid gap-2">
+              <h3 class="text-xl font-semibold">{{ blog.title }}</h3>
+              <p class="text-muted-foreground">{{ blog.excerpt }}</p>
+            </div>
+          </div>
+        </article>
+      </template>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
 import {ref, onMounted} from 'vue';
 import {getPosts} from '@/services/api';
 
-const posts = ref([]);
+const blogs = ref([]);
 const loading = ref(true);
 const error = ref('');
 
 const fetchPosts = async () => {
   try {
-    posts.value = await getPosts();
+    let {posts} = await getPosts();
+    blogs.value = posts;
   } catch (err) {
     error.value = err.message;
   } finally {
@@ -36,11 +43,6 @@ const fetchPosts = async () => {
 onMounted(() => {
   fetchPosts();
 });
-
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'});
-};
 </script>
 
 <style scoped>
