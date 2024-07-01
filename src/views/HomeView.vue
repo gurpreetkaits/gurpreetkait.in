@@ -1,6 +1,7 @@
 <script setup>
 import BlogView from '@/views/BlogView.vue'
 import SocialIcons from '@/components/SocialIcons.vue'
+import BlogList from "@/views/BlogList.vue";
 </script>
 
 <template>
@@ -22,6 +23,9 @@ import SocialIcons from '@/components/SocialIcons.vue'
             <SocialIcons></SocialIcons>
           </div>
         </div>
+      </div>
+      <div class="mt-8">
+      <BlogList />
       </div>
     </div>
   </div>
