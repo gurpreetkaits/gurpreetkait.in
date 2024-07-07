@@ -10,6 +10,9 @@ import BlogList from "@/views/BlogList.vue";
       <!--     Introduction     -->
       <div class="max-w-32 pl-4 flex items-center">
         <div>
+          <div class="grid grid-col-1 mb-2">
+            <img src="@/assets/gurpreetkait.jpeg" class="rounded-full w-32 h-32" />
+          </div>
           <div class="font-medium text-3xl	mb-3">
             Gurpreet Kait
           </div>
@@ -24,7 +27,7 @@ import BlogList from "@/views/BlogList.vue";
           </div>
         </div>
       </div>
-      <div class="mt-8">
+      <div class="mt-8m ml-3">
       <BlogList />
       </div>
     </div>
