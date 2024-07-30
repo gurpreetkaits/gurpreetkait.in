@@ -18,7 +18,7 @@
       Twitter
     </a>
     <a
-      href="https://www.linkedin.com/in/gurpreet-kait-a96276216/"
+      href="https://www.linkedin.com/in/gurpreet-kumar-a96276216/"
       target="_blank"
       class=" flex items-center justify-center hover:bg-gray-100 cursor-pointer px-3 text-xs py-1 mx-1 border duration-150 rounded-lg transition-all ease-in-out">
       <span>
