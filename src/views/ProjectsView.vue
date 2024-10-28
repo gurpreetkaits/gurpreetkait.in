@@ -1,4 +1,5 @@
 <template>
+  <Transition type="transition" :duration="1000" name="slide-fade" mode="in-out">
   <div class="project-view container p-4 mt-3 min-h-screen">
     <section class="w-full">
       <div class="container px-4 md:px-6">
@@ -57,6 +58,7 @@
       </div>
     </section>
   </div>
+  </Transition>
 </template>
 <script setup lang="ts">
 </script>
