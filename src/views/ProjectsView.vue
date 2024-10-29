@@ -50,7 +50,7 @@ const projects: Project[] = [
 
     <!-- Projects Grid -->
     <div class="max-w-4xl mx-auto px-4 pb-20">
-      <div class="grid grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div v-for="project in projects" :key="project.title" class="group relative bg-white/60 backdrop-blur-sm rounded-xl p-6 transition-all
                     hover:shadow-lg hover:bg-white/80 border border-gray-100">
 
