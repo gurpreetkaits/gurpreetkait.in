@@ -1,26 +1,19 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import Navbar from '@/components/Navbar.vue'
+import CenterNavbar from './components/CenterNavbar.vue';
 </script>
 
 <template>
   <main class="relative min-h-screen">
     <div class="container mx-auto p-4">
-      <div class="grid grid-cols-5 gap-6">
-        <!-- Fixed Navigation -->
-        <div class="col-span-1 sticky items-center flex" style="top: calc(50vh - 100px);">
-          <Navbar />
-        </div>
-
-        <!-- Scrollable Content Area -->
-        <div class="col-span-4 overflow-y-auto">
-          <RouterView v-slot="{ Component }">
-            <Transition name="slide-page" mode="out-in" appear>
-              <component :is="Component" :key="$route.path" />
-            </Transition>
-          </RouterView>
-        </div>
-      </div>
+      <CenterNavbar></CenterNavbar>
+      <!-- Scrollable Content Area -->
+      <RouterView v-slot="{ Component }">
+        <Transition name="slide-page" mode="out-in" appear>
+          <component :is="Component" :key="$route.path" />
+        </Transition>
+      </RouterView>
     </div>
   </main>
 </template>

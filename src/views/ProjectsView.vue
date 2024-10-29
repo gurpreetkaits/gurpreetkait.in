@@ -1,86 +1,102 @@
 <script setup lang="ts">
+import { Link, Github } from 'lucide-vue-next'
+
 interface Project {
   title: string
   description: string
+  techStack: string[]
   demoUrl?: string
   sourceUrl?: string
+  featured?: boolean
 }
 
 const projects: Project[] = [
   {
-    title: "E-commerce Website",
-    description: "A modern e-commerce platform built with React, Redux, and Node.js focusing on user experience and performance.",
-    demoUrl: "#",
-    sourceUrl: "#"
+    title: 'Daily Expense Tracker',
+    description: 'Effortlessly track your expenses, understand your spending patterns, and make better financial decisions.',
+    techStack: ['Vue','Tailwind','Pinia', 'Laravel', 'Mariadb'],
+    demoUrl: 'https://dailyexpensetracker.in/',
+    sourceUrl: '#',
+    featured: true
   },
   {
-    title: "Task Management App",
-    description: "Real-time task management application using React, Firebase, and Material-UI with focus on simplicity.",
-    demoUrl: "#",
-    sourceUrl: "#"
+    title: 'Minimal Task Management App',
+    description: 'Real-time task management application using React, Firebase, and Material-UI with focus on simplicity.',
+    techStack: ['HTML', 'CSS', 'Vanilla JS','Vercel'],
+    demoUrl: 'https://mtm-pwa.vercel.app/',
+    sourceUrl: 'https://github.com/gurpreetkaits/my-minimal-tm',
+    featured: true
+  },{
+    title: '$this (Portfolio)',
+    description: 'A personal blog.',
+    techStack: ['Vue', 'Tailwind', 'Vanilla JS','Vercel'],
+    demoUrl: '/',
+    sourceUrl: 'https://github.com/gurpreetkaits/gurpreetkait.in',
+    featured: true
   }
+  // Add more projects
 ]
 </script>
 
 <template>
-  <Transition name="fade" mode="out-in">
-    <div class="max-w-3xl mx-auto px-6 py-12">
-      <!-- Intro -->
-      <p class="text-gray-600 text-lg mb-16">
+  <div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-white">
+    <!-- Header -->
+    <div class="max-w-4xl mx-auto px-4 py-16">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4 text-center">Projects</h1>
+      <p class="text-gray-600 text-lg text-center">
         Here are some projects I've worked on. Each represents a unique challenge and learning experience.
       </p>
+    </div>
 
-      <!-- Projects Grid -->
-      <div class="space-y-12">
-        <article v-for="project in projects" :key="project.title" class="group space-y-4 p-6 rounded-xl 
-                 border border-gray-100 hover:border-gray-200
-                 transition-all duration-300">
-          <header>
-            <h3 class="text-xl font-medium text-gray-900">
+    <!-- Projects Grid -->
+    <div class="max-w-4xl mx-auto px-4 pb-20">
+      <div class="grid grid-cols-2 gap-8">
+        <div v-for="project in projects" :key="project.title" class="group relative bg-white/60 backdrop-blur-sm rounded-xl p-6 transition-all
+                    hover:shadow-lg hover:bg-white/80 border border-gray-100">
+
+          <!-- Project Header -->
+          <div class="flex items-start justify-between mb-4">
+            <h3 class="text-xl font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors">
               {{ project.title }}
             </h3>
-          </header>
 
-          <p class="text-gray-600 leading-relaxed">
-            {{ project.description }}
-          </p>
+            <!-- Links -->
+            <div class="flex gap-3">
+              <a v-if="project.demoUrl" :href="project.demoUrl" target="_blank"
+                class="text-gray-400 hover:text-emerald-500 transition-colors">
+                <Link class="w-5 h-5" />
+              </a>
+              <a v-if="project.sourceUrl" :href="project.sourceUrl" target="_blank"
+                class="text-gray-400 hover:text-emerald-500 transition-colors">
+                <Github class="w-5 h-5" />
+              </a>
+            </div>
+          </div>
 
-          <footer class="flex gap-4 pt-2">
-            <a v-if="project.demoUrl" :href="project.demoUrl" class="inline-flex items-center gap-2 text-gray-600 
-                     hover:text-gray-900 transition-colors" target="_blank" rel="noopener noreferrer">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-              </svg>
-              <span class="text-sm">Demo</span>
-            </a>
+          <!-- Description -->
+          <p class="text-gray-600 mb-4">{{ project.description }}</p>
 
-            <a v-if="project.sourceUrl" :href="project.sourceUrl" class="inline-flex items-center gap-2 text-gray-600 
-                     hover:text-gray-900 transition-colors" target="_blank" rel="noopener noreferrer">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                <path d="M9 18c-4.51 2-5-2-7-2" />
-              </svg>
-              <span class="text-sm">Source</span>
-            </a>
-          </footer>
-        </article>
+          <!-- Tech Stack -->
+          <div class="flex flex-wrap gap-2">
+            <span v-for="tech in project.techStack" :key="tech" class="px-3 py-1 text-sm rounded-full bg-gray-100 text-gray-600
+                         group-hover:bg-emerald-50 group-hover:text-emerald-600 transition-colors">
+              {{ tech }}
+            </span>
+          </div>
+
+          <!-- Hover Effect Gradient -->
+          <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/0 to-emerald-500/0 
+                      opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none">
+          </div>
+        </div>
       </div>
     </div>
-  </Transition>
+  </div>
 </template>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 </style>

@@ -43,6 +43,9 @@ const items: NavItem[] = [
               : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100/50'
           ]">
               <span class="font-medium text-sm">
+                <component :is="item.icon" width="13" />
+              </span>
+              <span class="font-medium text-sm hidden lg:block">
                 {{ item.name }}
               </span>
 
