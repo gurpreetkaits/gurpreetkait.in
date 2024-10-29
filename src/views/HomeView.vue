@@ -58,87 +58,107 @@ const experiences: Experience[] = [
 </script>
 
 <template>
-  <div id="homeViewContainer" class="mb-32 flex flex-col items-start my-7 transition-shadow ease-in-out duration-300">
-    <div class="container mx-auto p-4">
+  <div class="mb-32 flex flex-col items-start my-7">
+    <div class="container mx-auto px-4">
       <!-- Introduction -->
-      <div class="max-w-32 pl-4">
+      <div class="w-full">
         <div>
-          <div class="grid grid-col-1 mb-2">
-            <img src="@/assets/gurpreetkait.jpeg" class="rounded-full w-32 h-32" />
+          <!-- Profile Image -->
+          <div class="flex justify-center sm:justify-start mb-6">
+            <img 
+              src="@/assets/gurpreetkait.jpeg" 
+              class="rounded-full w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56" 
+            />
           </div>
-          <div>
-            <div class="flex items-start space-x-8">
-              <div class="flex-1">
-                <h1 class="font-bold text-3xl mb-6">Gurpreet Kait</h1>
 
-                <div class="space-y-6 text-gray-600">
-                  <p class="tracking-wide">
-                    Hey, I'm Gurpreet, a software developer exploring the intersection of web and AI. Currently
-                    contributing to open-source while crafting my own projects.
+          <!-- Content -->
+          <div class="flex flex-col gap-6">
+            <div class="flex-1">
+              <h1 class="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 text-center sm:text-left">
+                Gurpreet Kait
+              </h1>
+
+              <div class="space-y-6 text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl">
+                <p class="tracking-wide">
+                  Hey, I'm Gurpreet, a software developer exploring the intersection of web and AI. Currently
+                  contributing to open-source while crafting my own projects.
+                </p>
+
+                <div class="space-y-3">
+                  <p>
+                    Building with PHP/Laravel in production, diving deep into Python for computer vision projects. You
+                    can find my technical writings at
+                    <UrlBox :links="links.larachamp" /> where I share insights about
+                    Laravel development.
                   </p>
-                  <div class="space-y-3">
-                    <p>
-                      Building with PHP/Laravel in production, diving deep into Python for computer vision projects. You
-                      can find my technical writings at
-                      <UrlBox :links="links.larachamp" /> where I share insights about
-                      Laravel development.
-                    </p>
 
-                    <p>
-                      Active member of the Laravel community. Currently
-                      experimenting with ML models while dreaming up ideas for tools that make developers' lives easier.
-                    </p>
+                  <p>
+                    Active member of the Laravel community. Currently
+                    experimenting with ML models while dreaming up ideas for tools that make developers' lives easier.
+                  </p>
 
-                    <div class="pt-2">
-                      <p>When I'm not coding:</p>
-                      <div class="pl-4 pt-1 space-y-1">
-                        <p class="flex gap-1">
-                          <Book width="14px"></Book> Reading { Philosophy, Punjabi Literature, Indian Fiction }
-                        </p>
-                        <p class="flex gap-1">
-                          <SquareCode width="14px"></SquareCode> Planning the next side project
-                        </p>
-                      </div>
+                  <div class="pt-2">
+                    <p>When I'm not coding:</p>
+                    <div class="pl-4 pt-1 space-y-1">
+                      <p class="flex items-center gap-2">
+                        <Book class="w-4 h-4 sm:w-5 sm:h-5" /> 
+                        <span>Reading { Philosophy, Punjabi Literature, Indian Fiction }</span>
+                      </p>
+                      <p class="flex items-center gap-2">
+                        <SquareCode class="w-4 h-4 sm:w-5 sm:h-5" /> 
+                        <span>Planning the next side project</span>
+                      </p>
                     </div>
                   </div>
-                  <SocialIcons />
+                </div>
 
-                  <hr>
-                  </hr>
+                <SocialIcons />
 
-                  <!-- Experience Section -->
-                  <div class="space-y-4">
-                    <h2 class="font-semibold text-xl text-gray-900">Experience</h2>
-                    <div class="space-y-6">
-                      <div v-for="exp in experiences" :key="exp.company" class="flex gap-4">
-                        <div class="relative mt-1">
-                          <div class="w-2 h-2 rounded-full bg-gray-400" :class="{ 'bg-green-500': exp.current }"></div>
-                          <div class="absolute top-3 left-1 w-[1px] h-full -ml-px bg-gray-200" v-if="!exp.current">
-                          </div>
+                <hr />
+
+                <!-- Experience Section -->
+                <div class="space-y-6">
+                  <h2 class="font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-900">Experience</h2>
+                  <div class="space-y-6">
+                    <div v-for="exp in experiences" :key="exp.company" class="flex gap-4">
+                      <div class="relative mt-1">
+                        <div 
+                          class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-gray-400"
+                          :class="{ 'bg-green-500': exp.current }"
+                        ></div>
+                        <div 
+                          v-if="!exp.current"
+                          class="absolute top-3 left-1 w-[1px] h-full -ml-px bg-gray-200"
+                        ></div>
+                      </div>
+
+                      <div class="flex-1 pb-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                          <h3 class="font-medium text-gray-900 text-base sm:text-lg md:text-xl">{{ exp.role }}</h3>
+                          <span class="text-xs sm:text-sm text-gray-500 flex items-center gap-1">
+                            <Calendar class="w-4 h-4" />
+                            {{ exp.period }}
+                          </span>
                         </div>
-                        <div class="flex-1 pb-4">
-                          <div class="flex items-center justify-between mb-1">
-                            <h3 class="font-medium text-gray-900">{{ exp.role }}</h3>
-                            <span class="text-sm text-gray-500 flex items-center gap-1">
-                              <Calendar class="w-4 h-4" />
-                              {{ exp.period }}
+
+                        <div class="text-gray-600 text-sm sm:text-base">
+                          <div class="flex flex-wrap items-center gap-2">
+                            <span class="font-medium">
+                              <a :href="exp.url" target="_blank" class="hover:text-gray-800 transition-colors">
+                                {{ exp.company }}
+                              </a>
                             </span>
+                            <span class="text-xs sm:text-sm">· {{ exp.type }}</span>
                           </div>
-                          <div class="text-gray-600">
-                            <div class="flex items-center gap-2">
-                              <span class="font-medium"><a :href="exp.url" target="_blank">{{ exp.company }}</a></span>
-                              <span class="text-sm">· {{ exp.type }}</span>
-                            </div>
-                            <div class="text-sm text-gray-500">{{ exp.location }}</div>
-                          </div>
-                          <p v-if="exp.description" class="mt-2 text-sm text-gray-600">
-                            {{ exp.description }}
-                          </p>
+                          <div class="text-xs sm:text-sm text-gray-500">{{ exp.location }}</div>
                         </div>
+
+                        <p v-if="exp.description" class="mt-2 text-xs sm:text-sm text-gray-600">
+                          {{ exp.description }}
+                        </p>
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
