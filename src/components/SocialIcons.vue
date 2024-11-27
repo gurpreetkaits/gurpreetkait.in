@@ -26,15 +26,6 @@
       </span>
       LinkedIn
     </a>
-    <a
-      href="https://www.upwork.com/freelancers/gurpreetkumar3"
-      target="_blank"
-      class="flex items-center justify-center hover:bg-gray-100 cursor-pointer px-3 text-xs py-1 mx-1 border duration-150 rounded-lg transition-all ease-in-out">
-      <span>
-      <img src="@/assets/icons/upwork.png" class="w-3 h-3 mr-2 hidden md:block" />
-      </span>
-      Upwork
-    </a>
   </div>
 </template>
 <script setup lang="ts">
